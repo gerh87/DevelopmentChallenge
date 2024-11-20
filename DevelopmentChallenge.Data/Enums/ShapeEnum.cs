@@ -12,5 +12,6 @@ namespace DevelopmentChallenge.Data.Enums
         Triangle = 2,
         Circle = 3,
         Trapezoid = 4,
+        Rectangle = 5
     }
 }

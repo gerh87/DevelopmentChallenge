@@ -82,18 +82,64 @@ namespace DevelopmentChallenge.Data.Tests
                 new Circle(3),
                 new EquilateralTriangle(4),
                 new Square(2),
+                new Trapezoid(40, 20, 18, 13, 13),
                 new EquilateralTriangle(9),
                 new Circle(2.75m),
-                new EquilateralTriangle(4.2m)
+                new EquilateralTriangle(4.2m),
+                new Trapezoid(10, 5, 6, 7, 7)
             };
             var reportService = new ShapeReportService();
             var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.es);
 
             Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Área 29 | Perímetro 28 <br/>2 Círculos | Área 13,01 | Perímetro 18,06 <br/>3 Triángulos | Área 49,64 | Perímetro 51,6 <br/>TOTAL:<br/>7 formas Perímetro 97,66 Área 91,65",
+                "<h1>Reporte de Formas</h1>2 Cuadrados | Área 29 | Perímetro 28 <br/>2 Círculos | Área 13,01 | Perímetro 18,06 <br/>3 Triángulos | Área 49,64 | Perímetro 51,6 <br/>2 Trapecios | Área 585 | Perímetro 115 <br/>TOTAL:<br/>9 formas Perímetro 212,66 Área 676,65",
                 summary);
         }
+        [Test]
+        public void TestSummaryWithOneTrapezoid()
+        {
+            var trapecios = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.es);
 
+            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Área 45 | Perímetro 29 <br/>TOTAL:<br/>1 forma Perímetro 29 Área 45", summary);
+        }
+
+        [Test]
+        public void TestSummaryWithOneTrapezoidInItalian()
+        {
+            var trapecios = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.it);
+
+            Assert.AreEqual("<h1>Report di Forme</h1>1 Trapezio | Area 45 | Perimetro 29 <br/>TOTAL:<br/>1 forma Perimetro 29 Area 45", summary);
+        }
+
+        [Test]
+        public void TestSummaryWithAListOfTrapezoids()
+        {
+            var trapecios = new List<GeometricShape> {
+                new Trapezoid(10, 5, 6, 7, 7),
+                new Trapezoid(20, 10, 12, 10, 10),
+                new Trapezoid(40, 20, 18, 13, 13)
+            };
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.es);
+
+            Assert.AreEqual("<h1>Reporte de Formas</h1>3 Trapecios | Área 765 | Perímetro 165 <br/>TOTAL:<br/>3 formas Perímetro 165 Área 765", summary);
+        }
+
+        [Test]
+        public void TestSummaryWithOneRectangle()
+        {
+            var rectangles = new List<GeometricShape> { new Rectangle(10,5) };
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(rectangles, (int)LangEnum.es);
+
+            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Rectángulo | Área 50 | Perímetro 30 <br/>TOTAL:<br/>1 forma Perímetro 30 Área 50", summary);
+        }
+
+        [Test]
         [TestCase]
         public void TranslateEmptyListShoulBeSuccess()
         {
