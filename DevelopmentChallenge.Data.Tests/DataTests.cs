@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using DevelopmentChallenge.Data.Classes;
+using DevelopmentChallenge.Data.Constants;
+using DevelopmentChallenge.Data.Enums;
+using DevelopmentChallenge.Data.Services;
+using DevelopmentChallenge.Data.Shapes;
 using NUnit.Framework;
 
 namespace DevelopmentChallenge.Data.Tests
@@ -25,7 +30,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
-            var cuadrados = new List<FormaGeometrica> {new FormaGeometrica(FormaGeometrica.Cuadrado, 5)};
+            var cuadrados = new List<FormaGeometrica> { new FormaGeometrica(FormaGeometrica.Cuadrado, 5) };
 
             var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Castellano);
 
@@ -87,6 +92,15 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.AreEqual(
                 "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>TOTAL:<br/>7 formas Perimetro 97,66 Area 91,65",
                 resumen);
+        }
+        [TestCase]
+        public void TranslateEmptyListShoulBeSuccess()
+        {
+            var shapes = new List<GeometricShape>();
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.en);
+
+            Assert.AreEqual("<h1>Empty list of shapes!</h1>", summary);
         }
     }
 }

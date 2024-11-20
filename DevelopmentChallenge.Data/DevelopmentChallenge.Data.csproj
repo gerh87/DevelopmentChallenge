@@ -44,16 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Circle.cs" />
+    <Compile Include="Constants\MessageLabel.cs" />
+    <Compile Include="Enums\LangEnum.cs" />
+    <Compile Include="Enums\ShapeEnum.cs" />
+    <Compile Include="Services\ShapeReportService.cs" />
+    <Compile Include="Services\TranslateService.cs" />
+    <Compile Include="Shapes\Circle.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
-    <Compile Include="Classes\GeometricShape.cs" />
-    <Compile Include="Classes\Square.cs" />
-    <Compile Include="Classes\Trienagle.cs" />
+    <Compile Include="Shapes\GeometricShape.cs" />
+    <Compile Include="Shapes\Square.cs" />
+    <Compile Include="Shapes\EquilateralTriangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
