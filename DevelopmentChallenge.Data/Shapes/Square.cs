@@ -12,6 +12,10 @@ namespace DevelopmentChallenge.Data.Shapes
         public decimal Side { get; set; }
         public override string Type => ShapeEnum.Square.ToString();
 
+        public Square(decimal side)
+        {
+            Side = side;
+        }
         public override decimal CalculateArea()
         {
             return Side * Side;

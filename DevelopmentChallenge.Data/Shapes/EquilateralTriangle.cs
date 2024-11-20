@@ -10,7 +10,12 @@ namespace DevelopmentChallenge.Data.Shapes
     public class EquilateralTriangle : GeometricShape
     {
         public decimal Side { get; set; }
-        public override string Type => ShapeEnum.EquilateralTriangle.ToString();
+        public override string Type => ShapeEnum.Triangle.ToString();
+
+        public EquilateralTriangle(decimal side)
+        {
+            Side = side;
+        }
 
         public override decimal CalculateArea()
         {

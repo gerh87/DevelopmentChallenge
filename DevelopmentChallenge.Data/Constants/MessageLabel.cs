@@ -11,6 +11,8 @@ namespace DevelopmentChallenge.Data.Constants
         public const string EmptyList = "EmptyList";
         public const string ReportTitle = "ReportTitle";
         public const string Area = "Area";
-        public const string Permimeter = "Permineter";
+        public const string Permieter = "Perimeter";
+        public const string Shapes = "Shapes";
+        public const string Total = "Total";
     }
 }

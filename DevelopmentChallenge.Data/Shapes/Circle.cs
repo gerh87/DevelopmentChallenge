@@ -12,6 +12,10 @@ namespace DevelopmentChallenge.Data.Shapes
         public decimal Radio { get; set; }
         public override string Type => ShapeEnum.Circle.ToString();
 
+        public Circle(decimal radio)
+        {
+            Radio = radio;
+        }
         public override decimal CalculateArea()
         {
             return (decimal)Math.PI * (Radio / 2) * (Radio / 2);

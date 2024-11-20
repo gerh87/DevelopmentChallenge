@@ -33,9 +33,16 @@ namespace DevelopmentChallenge.Data.Services
 
             foreach (var item in result)
             {
-                reportStringBuilder.Append($"{item.Count} {TranslateService.Translate(Enum.GetName(typeof(ShapeEnum), item.Type), lang)} |" +
-                    $" {TranslateService.Translate(MessageLabel.Area, lang)}");
+
+                reportStringBuilder.Append($"{item.Count} {TranslateService.Translate(item.Type, lang, item.Count)} | " +
+                    $"{TranslateService.Translate(MessageLabel.Area, lang)} {item.TotalArea:#.##} | " +
+                    $"{TranslateService.Translate(MessageLabel.Permieter, lang)} {item.TotalPerimeter:#.##} <br/>");
             }
+
+            reportStringBuilder.Append($"{TranslateService.Translate(MessageLabel.Total.ToUpper(), lang)}:<br/>");
+            reportStringBuilder.Append($"{shapes.Count()} {TranslateService.Translate(MessageLabel.Shapes, lang, shapes.Count())} ");
+            reportStringBuilder.Append($"{TranslateService.Translate(MessageLabel.Permieter, lang)} {shapes.Sum(x => x.CalculatePerimeter()):#.##} ");
+            reportStringBuilder.Append($"{TranslateService.Translate(MessageLabel.Area, lang)} {shapes.Sum(x => x.CalculateArea()):#.##}");
 
             return reportStringBuilder.ToString();
 
