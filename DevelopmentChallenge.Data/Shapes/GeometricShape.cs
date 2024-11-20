@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevelopmentChallenge.Data.Classes
+namespace DevelopmentChallenge.Data.Shapes
 {
     public abstract class GeometricShape
     {
-        public decimal Side { get; set; }
-
+        public abstract string Type { get; }
         public abstract decimal CalculateArea();
         public abstract decimal CalculatePerimeter();
     }
