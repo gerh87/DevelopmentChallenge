@@ -20,6 +20,7 @@ namespace DevelopmentChallenge.Data.Services
                     { "Circle", ("Circle", "Circles") },
                     { "Triangle", ("Triangle", "Triangles") },
                     { "Trapezoid", ("Trapezoid", "Trapezoids")},
+                    { "Rectangle",("Rectangle","Rectangles")},
 #endregion
 #region messages
                     { "Shapes", ("shape", "shapes") },
@@ -40,6 +41,7 @@ namespace DevelopmentChallenge.Data.Services
                     { "Circle", ("Círculo", "Círculos") },
                     { "Triangle", ("Triángulo", "Triángulos") },
                     { "Trapezoid", ("Trapecio", "Trapecios")},
+                    { "Rectangle",("Rectángulo","Rectángulos")},
 
 #endregion
 #region messages
@@ -61,6 +63,7 @@ namespace DevelopmentChallenge.Data.Services
                     { "Circle", ("Cerchio", "Cerchi") },
                     { "Triangle", ("Triangolo", "Triangoli") },
                     { "Trapezoid", ("Trapezio", "Trapezi")},
+                    { "Rectangle",("Rettangolo","Rettangoli")},
 
 #endregion
 #region messages

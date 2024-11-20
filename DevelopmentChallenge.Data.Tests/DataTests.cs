@@ -98,9 +98,9 @@ namespace DevelopmentChallenge.Data.Tests
         [Test]
         public void TestSummaryWithOneTrapezoid()
         {
-            var cuadrados = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
+            var trapecios = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
             var reportService = new ShapeReportService();
-            var summary = reportService.PrintShapeReport(cuadrados, (int)LangEnum.es);
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.es);
 
             Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Área 45 | Perímetro 29 <br/>TOTAL:<br/>1 forma Perímetro 29 Área 45", summary);
         }
@@ -108,9 +108,9 @@ namespace DevelopmentChallenge.Data.Tests
         [Test]
         public void TestSummaryWithOneTrapezoidInItalian()
         {
-            var cuadrados = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
+            var trapecios = new List<GeometricShape> { new Trapezoid(10, 5, 6, 7, 7) };
             var reportService = new ShapeReportService();
-            var summary = reportService.PrintShapeReport(cuadrados, (int)LangEnum.it);
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.it);
 
             Assert.AreEqual("<h1>Report di Forme</h1>1 Trapezio | Area 45 | Perimetro 29 <br/>TOTAL:<br/>1 forma Perimetro 29 Area 45", summary);
         }
@@ -118,18 +118,28 @@ namespace DevelopmentChallenge.Data.Tests
         [Test]
         public void TestSummaryWithAListOfTrapezoids()
         {
-            var cuadrados = new List<GeometricShape> {
+            var trapecios = new List<GeometricShape> {
                 new Trapezoid(10, 5, 6, 7, 7),
                 new Trapezoid(20, 10, 12, 10, 10),
                 new Trapezoid(40, 20, 18, 13, 13)
             };
             var reportService = new ShapeReportService();
-            var summary = reportService.PrintShapeReport(cuadrados, (int)LangEnum.es);
+            var summary = reportService.PrintShapeReport(trapecios, (int)LangEnum.es);
 
             Assert.AreEqual("<h1>Reporte de Formas</h1>3 Trapecios | Área 765 | Perímetro 165 <br/>TOTAL:<br/>3 formas Perímetro 165 Área 765", summary);
         }
 
+        [Test]
+        public void TestSummaryWithOneRectangle()
+        {
+            var rectangles = new List<GeometricShape> { new Rectangle(10,5) };
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(rectangles, (int)LangEnum.es);
 
+            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Rectángulo | Área 50 | Perímetro 30 <br/>TOTAL:<br/>1 forma Perímetro 30 Área 50", summary);
+        }
+
+        [Test]
         [TestCase]
         public void TranslateEmptyListShoulBeSuccess()
         {
