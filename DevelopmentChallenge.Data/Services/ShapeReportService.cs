@@ -15,8 +15,8 @@ namespace DevelopmentChallenge.Data.Services
             if (!shapes.Any())
                 return reportStringBuilder.Append(TranslateService.Translate(MessageLabel.EmptyList, lang)).ToString();
 
-            reportStringBuilder.Append(TranslateService.Translate(MessageLabel.ReportTitle, lang));
 
+            reportStringBuilder.Append(TranslateService.Translate(MessageLabel.ReportTitle, lang));
 
             var result = shapes
                 .GroupBy(s => s.Type)
