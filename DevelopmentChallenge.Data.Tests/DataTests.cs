@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using DevelopmentChallenge.Data.Classes;
-using DevelopmentChallenge.Data.Constants;
+﻿using System.Collections.Generic;
 using DevelopmentChallenge.Data.Enums;
 using DevelopmentChallenge.Data.Services;
 using DevelopmentChallenge.Data.Shapes;
@@ -86,13 +82,14 @@ namespace DevelopmentChallenge.Data.Tests
                 new EquilateralTriangle(9),
                 new Circle(2.75m),
                 new EquilateralTriangle(4.2m),
-                new Trapezoid(10, 5, 6, 7, 7)
-            };
+                new Trapezoid(10, 5, 6, 7, 7),
+                new Rectangle(10,5),
+                new Rectangle(20,10),
+        };
             var reportService = new ShapeReportService();
             var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.es);
 
-            Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Área 29 | Perímetro 28 <br/>2 Círculos | Área 13,01 | Perímetro 18,06 <br/>3 Triángulos | Área 49,64 | Perímetro 51,6 <br/>2 Trapecios | Área 585 | Perímetro 115 <br/>TOTAL:<br/>9 formas Perímetro 212,66 Área 676,65",
+            Assert.AreEqual("<h1>Reporte de Formas</h1>2 Cuadrados | Área 29 | Perímetro 28 <br/>2 Círculos | Área 13,01 | Perímetro 18,06 <br/>3 Triángulos | Área 49,64 | Perímetro 51,6 <br/>2 Trapecios | Área 585 | Perímetro 115 <br/>2 Rectángulos | Área 250 | Perímetro 90 <br/>TOTAL:<br/>11 formas Perímetro 302,66 Área 926,65",
                 summary);
         }
         [Test]
@@ -140,14 +137,31 @@ namespace DevelopmentChallenge.Data.Tests
         }
 
         [Test]
-        [TestCase]
-        public void TranslateEmptyListShoulBeSuccess()
+        public void TranslateEmptyListInEnglishShoulBeSuccess()
         {
             var shapes = new List<GeometricShape>();
             var reportService = new ShapeReportService();
             var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.en);
 
             Assert.AreEqual("<h1>Empty list of shapes!</h1>", summary);
+        }
+        [Test]
+        public void TranslateEmptyListInSpanishShoulBeSuccess()
+        {
+            var shapes = new List<GeometricShape>();
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.es);
+
+            Assert.AreEqual("<h1>Lista vacía de formas!</h1>", summary);
+        }
+        [Test]
+        public void TranslateEmptyListInItalianShoulBeSuccess()
+        {
+            var shapes = new List<GeometricShape>();
+            var reportService = new ShapeReportService();
+            var summary = reportService.PrintShapeReport(shapes, (int)LangEnum.it);
+
+            Assert.AreEqual("<h1>Lista vuota di forme!</h1>", summary);
         }
     }
 }
